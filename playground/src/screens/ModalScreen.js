@@ -12,6 +12,7 @@ const {
   PUSH_BTN,
   MODAL_SCREEN_HEADER,
   MODAL_BTN,
+  OVERLAY_MODAL_BTN,
   DISMISS_MODAL_BTN,
   DISMISS_UNKNOWN_MODAL_BTN,
   MODAL_LIFECYCLE_BTN,
@@ -50,6 +51,7 @@ class ModalScreen extends React.Component {
     return (
       <Root componentId={this.props.componentId} footer={`Modal Stack Position: ${this.getModalPosition()}`}>
         <Button label='Show Modal' testID={MODAL_BTN} onPress={this.showModal} />
+        <Button label='Show OverlayModal' testID={OVERLAY_MODAL_BTN} onPress={this.showOverlayModal} />
         <Button label='Dismiss Modal' testID={DISMISS_MODAL_BTN} onPress={this.dismissModal} />
         <Button label='Dismiss Unknown Modal' testID={DISMISS_UNKNOWN_MODAL_BTN} onPress={this.dismissUnknownModal} />
         <Button label='Modal Lifecycle' testID={MODAL_LIFECYCLE_BTN} onPress={this.modalLifecycle} />
@@ -72,6 +74,18 @@ class ModalScreen extends React.Component {
           previousModalIds: concat([], this.props.previousModalIds || [], this.props.componentId)
         }
       }
+    });
+  }
+
+  showOverlayModal = () => {
+    Navigation.showModal({
+      component: {
+        name: Screens.OverlayModal,
+        passProps: {
+          modalPosition: this.getModalPosition() + 1,
+          previousModalIds: concat([], this.props.previousModalIds || [], this.props.componentId)
+        },
+      },
     });
   }
 

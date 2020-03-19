@@ -14,6 +14,7 @@ module.exports = {
   FullScreenModal: 'FullScreenModal',
   Layouts: 'Layouts',
   Modal: 'Modal',
+  OverlayModal: 'OverlayModal',
   Options: 'Options',
   Pushed: 'Pushed',
   Buttons: 'Buttons',
